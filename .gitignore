@@ -1,0 +1,26 @@
+# Moodle configuration
+config.php
+config.php.save
+
+# Moodle data
+../moodledata/
+
+# Runtime/cache
+cache/
+localcache/
+temp/
+sessions/
+
+# Node
+node_modules/
+
+# Composer
+vendor/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

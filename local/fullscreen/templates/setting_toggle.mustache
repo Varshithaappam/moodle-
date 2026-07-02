@@ -1,0 +1,56 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_fullscreen/setting_toggle
+
+    Setting for selecting the keyboard command to toggle fullscreen mode.
+
+    Context variables required for this template:
+    * name - form element name
+    * id - element id
+    * value - element value
+    * size - element size
+    * readonly - can the setting be changed
+
+    Example context (json):
+    {
+        "name": "test",
+        "id": "test0",
+        "value": "Ctrl + Alt + b",
+        "size": "21",
+        "readonly": false
+    }
+}}
+<div class="form-text defaultsnext" id="{{id}}-container">
+    <input type="text" name="view-{{name}}" value="{{value}}" size="{{size}}" id="view-{{id}}" class="form-control" disabled>
+    <input type="hidden" name="{{name}}" value="{{value}}" id="{{id}}" class="form-control">
+    <a {{!
+        }}href="" {{!
+        }}id="{{id}}-button" {{!
+        }}class="btn btn-secondary keyboard-toggle" {{!
+        }}data-for="{{id}}" {{!
+        }}role="switch" {{!
+        }}aria-checked="false"{{!
+        }}{{#readonly}} aria-readonly="true"{{/readonly}}>{{!
+        }}{{#str}}settoggle, local_fullscreen{{/str}}{{!
+    }}</a>
+</div>
+{{#js}}
+    require(['local_fullscreen/setting_toggle'], function(setting) {
+        setting.init('{{id}}');
+    });
+{{/js}}

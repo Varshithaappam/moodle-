@@ -1,0 +1,52 @@
+{{!
+    This file is part of the fullscreen button plugin.
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_fullscreen/button
+
+    Renders the html that displays the fixed full screen icon on a page.
+
+    Classes required for JS:
+    * local-fullscreen-padding
+    * local-fullscreen
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * fullscreen boolean
+    * toggle string
+
+    Example context (json):
+    {
+        "fullscreen": true,
+        "toggle": "Ctrl + Alt + b"
+    }
+}}
+
+<div class="local-fullscreen-padding">
+    <div
+            title="{{!
+                }}{{#fullscreen}}{{#str}}turnoff, local_fullscreen, {{toggle}}{{/str}}{{/fullscreen}}{{!
+                }}{{^fullscreen}}{{#str}}turnon, local_fullscreen, {{toggle}}{{/str}}{{/fullscreen}}{{!
+            }}"
+            class="local-fullscreen"
+            tabindex="0"
+            role="switch"
+            aria-checked="{{#fullscreen}}true{{/fullscreen}}{{^fullscreen}}false{{/fullscreen}}"
+            aria-label="{{#str}}togglefullscreenmode, local_fullscreen, {{toggle}}{{/str}}"
+    ></div>
+</div>

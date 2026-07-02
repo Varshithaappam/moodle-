@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<XMLDB PATH="payment/gateway/razorpay/db" VERSION="20241116" COMMENT="XMLDB file for razorpay payment gateway plugin"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../../../lib/xmldb/xmldb.xsd"
+>
+  <TABLES>
+    <TABLE NAME="paygw_razorpay" COMMENT="Stores razorpay related information">
+      <FIELDS>
+        <FIELD NAME="id" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="true"/>
+        <FIELD NAME="paymentid" TYPE="int" LENGTH="10" NOTNULL="true" SEQUENCE="false"/>
+        <FIELD NAME="rp_orderid" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="The Razorpay Order Id"/>
+        <FIELD NAME="rp_paymentid" TYPE="char" LENGTH="255" NOTNULL="true" SEQUENCE="false" COMMENT="Payment Id from razorpay"/>
+        <FIELD NAME="rp_signature" TYPE="char" LENGTH="555" NOTNULL="true" SEQUENCE="false" COMMENT="Signature from Razorpay"/>
+      </FIELDS>
+      <KEYS>
+        <KEY NAME="primary" TYPE="primary" FIELDS="id"/>
+        <KEY NAME="paymentid" TYPE="foreign-unique" FIELDS="paymentid" REFTABLE="payments" REFFIELDS="id"/>
+      </KEYS>
+    </TABLE>
+  </TABLES>
+</XMLDB>
